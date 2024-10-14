@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageId>Boyles.CleanAspNetCore.Template</PackageId>
+        <PackageVersion>1.0.2</PackageVersion>
+        <Title>ASP.NET Core Web App (Clean)</Title>
+        <Authors>Wayne Boyles</Authors>
+        <Description>Ready to use ASP.NET Core Razor Pages template using clean architechture.</Description>
+        <PackageTags>dotnet-new;templates</PackageTags>
+        <PackageProjectUrl>TODO:</PackageProjectUrl>
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageType>Template</PackageType>
+        <TargetFramework>net8.0</TargetFramework>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <LocalizeTemplates>false</LocalizeTemplates>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.TemplateEngine.Tasks" Version="*" PrivateAssets="all" IsImplicitlyDefined="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="src\**\*" Exclude="src\**\bin\**;src\**\obj\**;src\**\Logs\**;src\.vs\**" PackagePath="/content" />
+
+        <Compile Remove="**\*" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="/" />
+        <None Include="logo.png" Pack="true" PackagePath="/" />
+    </ItemGroup>
+
+</Project>
