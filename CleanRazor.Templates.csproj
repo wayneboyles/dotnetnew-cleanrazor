@@ -7,7 +7,7 @@
         <Authors>Wayne Boyles</Authors>
         <Description>Ready to use ASP.NET Core Razor Pages template using clean architechture.</Description>
         <PackageTags>dotnet-new;templates</PackageTags>
-        <PackageProjectUrl>TODO:</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/wayneboyles/dotnetnew-cleanrazor</PackageProjectUrl>
         <PackageIcon>logo.png</PackageIcon>
         <PackageType>Template</PackageType>
         <TargetFramework>net8.0</TargetFramework>
@@ -24,11 +24,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.TemplateEngine.Tasks" Version="*" PrivateAssets="all" IsImplicitlyDefined="true" />
+        <PackageReference Include="Microsoft.TemplateEngine.Tasks" Version="*" PrivateAssets="all"
+            IsImplicitlyDefined="true" />
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="src\**\*" Exclude="src\**\bin\**;src\**\obj\**;src\**\Logs\**;src\.vs\**" PackagePath="/content" />
+        <Content Include="src\**\*" Exclude="src\**\bin\**;src\**\obj\**;src\**\Logs\**;src\.vs\**"
+            PackagePath="/content" />
 
         <Compile Remove="**\*" />
     </ItemGroup>
