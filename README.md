@@ -23,12 +23,6 @@ This will install the latest version from the NuGet repository.
 
 The template will be installed with two short names for use: `cleanwebapp` and `cleanrazor`. Either can be used to generate a new solution.
 
-The template comes with a number of configurable options. To view all of the available options, run the following command:
-
-```
-dotnet new cleanwebapp /?
-```
-
 To create a new solution using the default values and project name of `MyProject`, run the following command:
 
 ```
@@ -37,9 +31,17 @@ dotnet new cleanwebapp -n "MyProject"
 
 ### Options
 
-`--logging | -lo` - Either `None` or `Serilog`. Default is `Serilog`.
+The template comes with a number of configurable options. To view all of the available options, run the following command:
+
+```
+dotnet new cleanwebapp --help
+```
+
+`--logging | -log` - Either `None` or `Serilog`. Default is `Serilog`.
 
 `--no-restore` - When specified, project references will not be automatically restored.
+
+`--database | -db` - Either `LocalDB` (SQLite), `SQL` (MSSQL Server) or `PGSQL` (PostgreSQL). Default is `SQL`.
 
 ---
 
@@ -52,3 +54,9 @@ dotnet new cleanwebapp -n "MyProject"
 - Added EF Core Db Context Factory
 - Added Generic Repository
 - Added Serilog Logging
+
+### v1.0.7
+
+- Added Automapper
+- Added choice of Database (LocalDB, SQL Server & PostgreSQL)
+- Made the Key property of Entities generic

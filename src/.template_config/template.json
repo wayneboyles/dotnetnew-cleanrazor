@@ -74,7 +74,8 @@
           "description": "Use PostgreSQL Server as the database",
           "displayName": "PostgreSQL"
         }
-      ]
+      ],
+      "defaultValue": "SQL"
     },
 
     "UseLocalDB": {
