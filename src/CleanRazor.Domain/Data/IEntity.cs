@@ -1,6 +1,6 @@
 ﻿namespace CleanRazor.Data
 {
-    public interface IEntity
+    public interface IEntity<TKey>
     {
         /// <summary>
         /// The entity identifier
@@ -8,7 +8,7 @@
         /// <value>
         /// The identifier.
         /// </value>
-        int Id { get; set; }
+        TKey Id { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this entity is enabled.

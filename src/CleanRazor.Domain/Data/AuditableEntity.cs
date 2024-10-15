@@ -1,6 +1,6 @@
 ﻿namespace CleanRazor.Data
 {
-    public abstract class AuditableEntity : Entity, IAuditableEntity
+    public abstract class AuditableEntity<TKey> : Entity<TKey>, IAuditableEntity<TKey> where TKey : class
     {
         public string? CreatedBy { get; set; }
 

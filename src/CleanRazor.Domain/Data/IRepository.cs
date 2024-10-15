@@ -28,7 +28,7 @@ namespace CleanRazor.Data
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        T? GetById(int id);
+        T? GetById<TKey>(TKey id) where TKey : class;
 
         /// <summary>
         /// Gets the entity by its identifier.
@@ -36,7 +36,7 @@ namespace CleanRazor.Data
         /// <param name="id">The identifier.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
+        Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default) where TKey : class;
 
         /// <summary>
         /// Gets the specified entity.

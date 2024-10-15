@@ -1,20 +1,15 @@
 {
   "$schema": "http://json.schemastore.org/dotnetcli.host",
   "symbolInfo": {
-    "kestrelHttpPort": {
-      "isHidden": true
-    },
+    "kestrelHttpPort": { "isHidden": true },
+    "kestrelHttpsPort": { "isHidden": true },
+    "iisHttpPort": { "isHidden": true },
+    "iisHttpsPort": { "isHidden": true },
+    "ConnectionString": { "isHidden": true },
 
-    "kestrelHttpsPort": {
-      "isHidden": true
-    },
-
-    "iisHttpPort": {
-      "isHidden": true
-    },
-
-    "iisHttpsPort": {
-      "isHidden": true
+    "logging": {
+      "longName": "logging",
+      "shortName": "log"
     },
 
     "skipRestore": {
@@ -25,6 +20,11 @@
     "NoHttps": {
       "longName": "no-https",
       "shortName": ""
+    },
+
+    "database": {
+      "longName": "database",
+      "shortName": "db"
     }
   }
 }

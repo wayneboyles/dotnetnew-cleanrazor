@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an entity with audit fields
     /// </summary>
-    public interface IAuditableEntity
+    public interface IAuditableEntity<TKey> : IEntity<TKey>
     {
         /// <summary>
         /// Who the entity was created by.

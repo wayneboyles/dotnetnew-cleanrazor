@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>Boyles.CleanAspNetCore.Template</PackageId>
-        <PackageVersion>1.0.2</PackageVersion>
+        <PackageVersion>1.0.6</PackageVersion>
         <Title>ASP.NET Core Web App (Clean)</Title>
         <Authors>Wayne Boyles</Authors>
         <Description>Ready to use ASP.NET Core Razor Pages template using clean architechture.</Description>
@@ -31,6 +31,8 @@
     <ItemGroup>
         <Content Include="src\**\*" Exclude="src\**\bin\**;src\**\obj\**;src\**\Logs\**;src\.vs\**"
             PackagePath="/content" />
+
+        <Content Include="LICENSE" PackagePath="/" />
 
         <Compile Remove="**\*" />
     </ItemGroup>

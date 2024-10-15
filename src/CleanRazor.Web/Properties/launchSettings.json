@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    //#if (HasHttpProfile)
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
@@ -10,13 +9,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    //#if (HasHttpsProfile)
     },
-    //#else
-    }
-    //#endif
-    //#endif
-    //#if (HasHttpsProfile)
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
@@ -26,6 +19,5 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-    //#endif
   }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Reflection;
 using CleanRazor.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,7 +37,11 @@ namespace CleanRazor.EntityFrameworkCore
         /// </remarks>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             FilterSoftDeletedEntities(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         #region Soft Delete Methods
