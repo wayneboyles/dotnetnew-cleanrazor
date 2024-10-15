@@ -6,6 +6,12 @@
         {
             services.AddHttpContextAccessor();
 
+            // Automapper
+            services.AddAutoMapper(options =>
+            {
+                options.AddProfile<CleanRazorApplicationMapperProfile>();
+            });
+
             return services;
         }
     }
