@@ -29,6 +29,20 @@ To create a new solution using the default values and project name of `MyProject
 dotnet new cleanwebapp -n "MyProject"
 ```
 
+### Options
+
+The template comes with a number of configurable options. To view all of the available options, run the following command:
+
+```
+dotnet new cleanwebapp --help
+```
+
+`--logging | -log` - Either `None` or `Serilog`. Default is `Serilog`.
+
+`--no-restore` - When specified, project references will not be automatically restored.
+
+`--database | -db` - Either `LocalDB` (SQLite), `SQL` (MSSQL Server) or `PGSQL` (PostgreSQL). Default is `SQL`.
+
 ---
 
 ## Changelog
@@ -40,3 +54,9 @@ dotnet new cleanwebapp -n "MyProject"
 - Added EF Core Db Context Factory
 - Added Generic Repository
 - Added Serilog Logging
+
+### v1.0.7
+
+- Added Automapper
+- Added choice of Database (LocalDB, SQL Server & PostgreSQL)
+- Made the Key property of Entities generic

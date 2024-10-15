@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanRazor
 {
@@ -8,6 +9,9 @@ namespace CleanRazor
         {
             // Add application services to the collection
             
+            // Automapper
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             // Return
             return services;
         }

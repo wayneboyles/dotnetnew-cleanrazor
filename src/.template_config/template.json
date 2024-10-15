@@ -55,6 +55,67 @@
       "value": "(logging == \"Serilog\")"
     },
 
+    "database": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "LocalDB",
+          "description": "Use LocalDB as the database",
+          "displayName": "LocalDB"
+        },
+        {
+          "choice": "SQL",
+          "description": "Use MS SQL Server as the database",
+          "displayName": "SQL Server"
+        },
+        {
+          "choice": "PGSQL",
+          "description": "Use PostgreSQL Server as the database",
+          "displayName": "PostgreSQL"
+        }
+      ],
+      "defaultValue": "SQL"
+    },
+
+    "UseLocalDB": {
+      "type": "computed",
+      "value": "(database == \"LocalDB\")"
+    },
+
+    "UseSqlServer": {
+      "type": "computed",
+      "value": "(database == \"SQL\")"
+    },
+
+    "UsePostgreSQL": {
+      "type": "computed",
+      "value": "(database == \"PGSQL\")"
+    },
+
+    "ConnectionString": {
+      "type": "generated",
+      "generator": "switch",
+      "replaces": "#TheDefaultConnectionString#",
+      "parameters": {
+        "evaluator": "C++",
+        "cases": [
+          {
+            "condition": "(UseLocalDB)",
+            "value": "Data Source=App.db"
+          },
+          {
+            "condition": "(UseSqlServer)",
+            "value": "Server=localhost;Database=MyDatabase;Integrated_Security=True;TrustServerCertificate=True"
+          },
+          {
+            "condition": "(UsePostgreSQL)",
+            "value": "Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase"
+          }
+        ]
+      }
+    },
+
     "kestrelHttpPort": {
       "type": "parameter",
       "datatype": "integer",
@@ -164,13 +225,6 @@
     "HasHttpsProfile": {
       "type": "computed",
       "value": "(RequiresHttps || !NoHttps)"
-    },
-
-    "NoHttps": {
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "false",
-      "description": "Whether to turn off HTTPS. This option only applies if IndividualB2C, SingleOrg, or MultiOrg aren't used for --auth."
     }
   },
   "sources": [
@@ -181,7 +235,7 @@
         },
         {
           "condition": "(!SerilogLogging)",
-          "exclude": ["Logging.cs"]
+          "exclude": ["CleanRazor.Web/Logging.cs"]
         }
       ]
     }

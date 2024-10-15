@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<RootNamespace>CleanRazor</RootNamespace>
+		<AssemblyName>CleanRazor.Domain</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -48,7 +48,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public T? GetById(int id)
+        public T? GetById<TKey>(TKey id) where TKey : class
         {
             return context.Set<T>().Find(id);
         }
@@ -59,7 +59,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
         /// <param name="id">The identifier.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default) where TKey : class
         {
             return await context.Set<T>().FindAsync(id, cancellationToken);
         }
