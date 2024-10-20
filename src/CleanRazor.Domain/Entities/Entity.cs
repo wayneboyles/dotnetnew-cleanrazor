@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CleanRazor.Data
+namespace CleanRazor.Entities
 {
-    public abstract class Entity<TKey> : IEntity<TKey> where TKey : class
+    public abstract class Entity<TKey> : IEntity<TKey>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -27,6 +27,6 @@
         /// <value>
         /// The deleted date and time.
         /// </value>
-        public DateTime? DeletedOn { get; set; }
+        public DateTimeOffset? DeletedOn { get; set; }
     }
 }

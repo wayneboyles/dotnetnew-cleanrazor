@@ -1,9 +1,9 @@
-﻿namespace CleanRazor.Data
+﻿namespace CleanRazor.Entities
 {
     /// <summary>
     /// Represents an entity with audit fields
     /// </summary>
-    public interface IAuditableEntity<TKey> : IEntity<TKey>
+    public interface IAudited
     {
         /// <summary>
         /// Who the entity was created by.
@@ -19,7 +19,7 @@
         /// <value>
         /// The creation date and time.
         /// </value>
-        public DateTime CreatedOn { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
 
         /// <summary>
         /// Who the entity was modified by.
@@ -35,6 +35,6 @@
         /// <value>
         /// The modification date and time.
         /// </value>
-        public DateTime? ModifiedOn { get; set; }
+        public DateTimeOffset? ModifiedOn { get; set; }
     }
 }

@@ -15,9 +15,14 @@ namespace CleanRazor.EntityFrameworkCore
 
             var connectionString = configuration.GetConnectionString("Default");
 
-            var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlServer(connectionString);
-
+            var options = new DbContextOptionsBuilder<AppDbContext>();
+#if (UseSqlServer)
+            options.UseSqlServer(connectionString);
+#elif (UsePostgreSQL)
+            options.UseNpgsql(connectionString);
+#elif (UseLocalDB)
+            options.UseSqlite(connectionString);
+#endif
             return new AppDbContext(options.Options);
         }
     }

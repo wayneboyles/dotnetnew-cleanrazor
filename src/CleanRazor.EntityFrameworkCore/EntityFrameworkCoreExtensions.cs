@@ -14,6 +14,7 @@ namespace CleanRazor.EntityFrameworkCore
             var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' was not found");
 
             // Interceptors
+            services.AddScoped<ISaveChangesInterceptor, AuditInterceptor>();
             services.AddScoped<ISaveChangesInterceptor, SoftDeleteInterceptor>();
             
             // Add the DB Context

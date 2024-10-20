@@ -1,4 +1,4 @@
-﻿namespace CleanRazor.Data
+﻿namespace CleanRazor.Entities
 {
     public abstract class ValueObject
     {
@@ -26,7 +26,7 @@
         /// <returns></returns>
         protected static bool NotEqualOperator(ValueObject left, ValueObject right)
         {
-            return !(EqualOperator(left, right));
+            return !EqualOperator(left, right);
         }
 
         /// <summary>

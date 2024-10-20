@@ -23,7 +23,7 @@ namespace CleanRazor.EntityFrameworkCore.Interceptors
                 entry.State = EntityState.Modified;
 
                 delete.IsDeleted = true;
-                delete.DeletedOn = DateTime.Now;
+                delete.DeletedOn = DateTimeOffset.UtcNow;
             }
 
             return result;
