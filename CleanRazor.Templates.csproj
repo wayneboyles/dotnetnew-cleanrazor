@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <PackageId>Boyles.CleanAspNetCore.Template</PackageId>
-        <PackageVersion>1.0.7</PackageVersion>
+        <PackageVersion>1.0.9</PackageVersion>
         <Title>ASP.NET Core Web App (Clean)</Title>
         <Authors>Wayne Boyles</Authors>
         <Description>Ready to use ASP.NET Core Razor Pages template using clean architechture.</Description>
