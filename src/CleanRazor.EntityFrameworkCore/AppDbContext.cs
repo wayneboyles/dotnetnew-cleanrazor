@@ -1,9 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
-
-using CleanRazor.Data;
-using CleanRazor.Entities;
-
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanRazor.EntityFrameworkCore
@@ -45,40 +40,11 @@ namespace CleanRazor.EntityFrameworkCore
             // Apply configurations
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            var auditedType = typeof(IAudited);
-            var softDeleteType = typeof(ISoftDelete);
+            // Configure Soft Delete Entities
+            modelBuilder.ConfigureSoftDelete();
 
-            // Configure
-            foreach (var entity in modelBuilder.Model.GetEntityTypes())
-            {
-                // Soft Delete
-                if (softDeleteType.IsAssignableFrom(entity.ClrType))
-                {
-                    modelBuilder.Entity(entity.ClrType).Property<string>("DeletedBy").IsRequired(false).HasMaxLength(128);
-                    modelBuilder.Entity(entity.ClrType).HasQueryFilter(GenerateQueryFilterExpression(entity.ClrType));
-                }
-                else if(auditedType.IsAssignableFrom(entity.ClrType))
-                {
-                    // Audited Entity
-                    modelBuilder.Entity(entity.ClrType).Property<string>("CreatedBy").IsRequired(false).HasMaxLength(128);
-                    modelBuilder.Entity(entity.ClrType).Property<string>("ModifiedBy").IsRequired(false).HasMaxLength(128);
-                }
-            }
+            // Configure Audited Properties
+            modelBuilder.ConfigureAuditProperties();
         }
-
-        #region Soft Delete Methods
-
-        private LambdaExpression GenerateQueryFilterExpression(Type type)
-        {
-            var parameter = Expression.Parameter(type, "sd");
-            var falseConstantValue = Expression.Constant(false);
-            var propertyAccess = Expression.PropertyOrField(parameter, nameof(ISoftDelete.IsDeleted));
-            var equalExpression = Expression.Equal(propertyAccess, falseConstantValue);
-            var lambda = Expression.Lambda(equalExpression, parameter);
-
-            return lambda;
-        }
-
-        #endregion
     }
 }
