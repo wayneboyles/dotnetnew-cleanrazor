@@ -1,4 +1,4 @@
-﻿namespace CleanRazor.Data
+﻿namespace CleanRazor.Entities
 {
     public interface IEntity<TKey>
     {

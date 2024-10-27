@@ -11,7 +11,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
     /// <seealso cref="CleanRazor.Data.IRepository&lt;T&gt;" />
     /// <seealso cref="System.IDisposable" />
     /// <seealso cref="System.IAsyncDisposable" />
-    public abstract class Repository<T>(DbContext context) : IRepository<T>, IDisposable, IAsyncDisposable where T : class
+    public abstract class Repository<T>(AppDbContext context) : IRepository<T>, IDisposable, IAsyncDisposable where T : class
     {
         /// <summary>
         /// Adds the specified entity.
@@ -48,7 +48,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public T? GetById<TKey>(TKey id) where TKey : class
+        public T? GetById<TKey>(TKey id)
         {
             return context.Set<T>().Find(id);
         }
@@ -59,7 +59,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
         /// <param name="id">The identifier.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns></returns>
-        public async Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default) where TKey : class
+        public async Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default)
         {
             return await context.Set<T>().FindAsync(id, cancellationToken);
         }

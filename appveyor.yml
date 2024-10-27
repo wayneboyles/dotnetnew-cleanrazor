@@ -1,4 +1,7 @@
 version: 1.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
+
 branches:
   only:
     - main
@@ -10,7 +13,7 @@ image: Visual Studio 2022
 
 dotnet_csproj:
   patch: true
-  file: CleanRazor.Templates.csproj
+  file: .\CleanRazor.Templates.csproj
   version: "{version}"
   version_prefix: "{version}"
   package_version: "{version}"
@@ -20,3 +23,5 @@ dotnet_csproj:
 
 build_script:
   - ps: ./build.ps1
+
+test: off

@@ -60,3 +60,15 @@ dotnet new cleanwebapp --help
 - Added Automapper
 - Added choice of Database (LocalDB, SQL Server & PostgreSQL)
 - Made the Key property of Entities generic
+
+### v1.1.0 (Breaking Changes)
+
+- Moved Entities to their own Namespace
+- Introduced new entity types:
+  - AuditedEntity (Replaces AuditableEntity)
+  - SoftDeleteEntity
+  - SoftDeleteAuditedEntity
+- Fixed bugs in the EF Core DbContext
+- Added the FluentResults package
+- Added configuration options to VS New Project Wizard
+- Fixed bugs with the IRepository implementation

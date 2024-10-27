@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
-using CleanRazor.Data;
+﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanRazor.EntityFrameworkCore
@@ -39,37 +37,14 @@ namespace CleanRazor.EntityFrameworkCore
         {
             base.OnModelCreating(modelBuilder);
 
-            FilterSoftDeletedEntities(modelBuilder);
-
+            // Apply configurations
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            // Configure Soft Delete Entities
+            modelBuilder.ConfigureSoftDelete();
+
+            // Configure Audited Properties
+            modelBuilder.ConfigureAuditProperties();
         }
-
-        #region Soft Delete Methods
-
-        private void FilterSoftDeletedEntities(ModelBuilder modelBuilder)
-        {
-            var softDeleteEntities = typeof(ISoftDelete)
-                .Assembly
-                .GetTypes()
-                .Where(type => typeof(ISoftDelete).IsAssignableFrom(type) && type is { IsClass: true, IsAbstract: false });
-
-            foreach (var softDeleteEntity in softDeleteEntities)
-            {
-                modelBuilder.Entity(softDeleteEntity).HasQueryFilter(GenerateQueryFilterLambda(softDeleteEntity));
-            }
-        }
-
-        private LambdaExpression? GenerateQueryFilterLambda(Type type)
-        {
-            var parameter = Expression.Parameter(type, "w");
-            var falseConstantValue = Expression.Constant(false);
-            var propertyAccess = Expression.PropertyOrField(parameter, nameof(ISoftDelete.IsDeleted));
-            var equalExpression = Expression.Equal(parameter, falseConstantValue);
-            var lambda = Expression.Lambda(equalExpression, parameter);
-
-            return lambda;
-        }
-
-        #endregion
     }
 }
