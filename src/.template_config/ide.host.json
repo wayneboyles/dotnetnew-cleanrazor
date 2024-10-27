@@ -2,6 +2,21 @@
   "$schema": "http://json.schemastore.org/vs-2017.3.host",
   "icon": "icon.png",
   "order": 401,
-  "symbolInfo": [],
+  "symbolInfo": [
+    {
+      "id": "logging",
+      "name": {
+        "text": "Logging Type"
+      },
+      "isVisible": true
+    },
+    {
+      "id": "database",
+      "name": {
+        "text": "Database Type"
+      },
+      "isVisible": true
+    }
+  ],
   "disableHttpsSymbol": "NoHttps"
 }
