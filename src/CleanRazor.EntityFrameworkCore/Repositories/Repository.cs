@@ -11,7 +11,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
     /// <seealso cref="CleanRazor.Data.IRepository&lt;T&gt;" />
     /// <seealso cref="System.IDisposable" />
     /// <seealso cref="System.IAsyncDisposable" />
-    public abstract class Repository<T>(AppDbContext context) : IRepository<T>, IDisposable, IAsyncDisposable where T : class
+    public abstract class Repository<T>(AppDbContext context) : IRepository<T>, IDisposable, IAsyncDisposable where T : DbContext
     {
         /// <summary>
         /// Adds the specified entity.
