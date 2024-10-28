@@ -61,7 +61,7 @@ namespace CleanRazor.EntityFrameworkCore.Repositories
         /// <returns></returns>
         public async Task<T?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken = default)
         {
-            return await context.Set<T>().FindAsync(id, cancellationToken);
+            return await context.Set<T>().FindAsync(new object?[] { id, cancellationToken }, cancellationToken: cancellationToken);
         }
 
         /// <summary>
